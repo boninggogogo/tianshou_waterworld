@@ -1,0 +1,45 @@
+Epoch #1:   1%|          | 6/1000 [00:00<00:14, 68.54it/s]
+Traceback (most recent call last):
+  File "D:/pycharmprojects/MA_DC_env/exp_v2/train_waterworld/trian_waterworld.py", line 224, in <module>
+    result, agent = train_agent(args)
+  File "D:/pycharmprojects/MA_DC_env/exp_v2/train_waterworld/trian_waterworld.py", line 206, in train_agent
+    result = offpolicy_trainer(
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\trainer\offpolicy.py", line 133, in offpolicy_trainer
+    return OffpolicyTrainer(*args, **kwargs).run()
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\trainer\base.py", line 440, in run
+    deque(self, maxlen=0)  # feed the entire iterator into a zero-length deque
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\trainer\base.py", line 299, in __next__
+    self.policy_update_fn(data, result)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\trainer\offpolicy.py", line 122, in policy_update_fn
+    losses = self.policy.update(self.batch_size, self.train_collector.buffer)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\policy\base.py", line 276, in update
+    batch = self.process_fn(batch, buffer, indices)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\policy\multiagent\mapolicy.py", line 75, in process_fn
+    results[agent] = policy.process_fn(tmp_batch, buffer, tmp_indice)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\policy\modelfree\ddpg.py", line 114, in process_fn
+    batch = self.compute_nstep_return(
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\policy\base.py", line 391, in compute_nstep_return
+    target_q_torch = target_q_fn(buffer, terminal)  # (bsz, ?)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\policy\modelfree\ddpg.py", line 107, in _target_q
+    self(batch, model='actor_old', input='obs_next').act
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\policy\modelfree\ddpg.py", line 144, in forward
+    actions, hidden = model(obs, state=state, info=batch.info)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\utils\net\continuous.py", line 66, in forward
+    logits, hidden = self.preprocess(obs, state)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\utils\net\common.py", line 212, in forward
+    logits = self.model(obs)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\torch\nn\modules\module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\utils\net\common.py", line 107, in forward
+    obs = torch.as_tensor(obs, device=self.device, dtype=torch.float32)
+  File "E:\Anaconda3\envs\ai-engine\lib\site-packages\tianshou\data\batch.py", line 683, in __len__
+    elif hasattr(obj, "__len__") and (isinstance(obj, Batch) or obj.ndim > 0):
+AttributeError: 'str' object has no attribute 'ndim'
+
+Process finished with exit code 1
